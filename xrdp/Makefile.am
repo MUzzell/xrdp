@@ -45,6 +45,7 @@ xrdp_SOURCES = \
   xrdp_painter.c \
   xrdp_process.c \
   xrdp_region.c \
+  xrdp_osirium.c \
   xrdp_wm.c
 
 xrdp_LDADD = \

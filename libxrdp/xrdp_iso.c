@@ -314,6 +314,9 @@ xrdp_iso_incoming(struct xrdp_iso *self)
     make_stream(s);
     init_stream(s, 8192);
     DEBUG(("   in xrdp_iso_incoming"));
+    
+    // NOTE alternate place to look for osirium rdp preamble
+    // can be inteligient then and handle if it is there or not.
 
     if (xrdp_iso_recv_msg(self, s, &code, &len) != 0)
     {

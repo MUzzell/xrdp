@@ -409,6 +409,23 @@ lxrdp_set_param(struct mod *mod, char *name, char *value)
         /* This is a Struct and cannot be printed in next else*/
         LLOGLN(10, ("Client_info struct ignored"));
     }
+    else if (g_strcmp(name, "program") == 0)
+    {
+        g_strncpy(settings->AlternateShell, value, sizeof(settings->AlternateShell)-1);
+    }
+    else if (g_strcmp(name, "nla") == 0)
+    {
+        if ((g_strcasecmp(value, "yes") == 0) ||
+            (g_strcasecmp(value, "true") == 0) ||
+            (g_strcasecmp(value, "1") == 0))
+        {
+            settings->NlaSecurity = 1;
+        }
+        else
+        {
+            settings->NlaSecurity = 0;
+        }
+    }
     else
     {
         LLOGLN(0, ("lxrdp_set_param: unknown name [%s] value [%s]", name, value));

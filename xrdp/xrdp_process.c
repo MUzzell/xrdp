@@ -251,6 +251,12 @@ xrdp_process_main_loop(struct xrdp_process *self)
     self->server_trans->callback_data = self;
     init_stream(self->server_trans->in_s, 8192 * 4);
     self->session = libxrdp_init((tbus)self, self->server_trans);
+
+    if (self->session->client_info->use_osirium_preamble)
+    {
+        read_preamble_packet(self);
+    }
+
     /* this callback function is in xrdp_wm.c */
     self->session->callback = callback;
     /* this function is just above */
