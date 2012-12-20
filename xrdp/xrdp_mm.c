@@ -2176,7 +2176,7 @@ server_paint_rects(struct xrdp_mod* mod, int num_drects, short *drects,
         xrdp_painter_copy(p, b, wm->target_surface, s[0], s[1], s[2], s[3],
                           s[0], s[1]);
         s += 4;
-    }                 
+    }
     xrdp_bitmap_delete(b);
     return 0;
 }
