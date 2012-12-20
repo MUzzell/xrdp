@@ -415,16 +415,7 @@ lxrdp_set_param(struct mod *mod, char *name, char *value)
     }
     else if (g_strcmp(name, "nla") == 0)
     {
-        if ((g_strcasecmp(value, "yes") == 0) ||
-            (g_strcasecmp(value, "true") == 0) ||
-            (g_strcasecmp(value, "1") == 0))
-        {
-            settings->NlaSecurity = 1;
-        }
-        else
-        {
-            settings->NlaSecurity = 0;
-        }
+        settings->NlaSecurity = g_string_to_boolean(value);;
     }
     else
     {
