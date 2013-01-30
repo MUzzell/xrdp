@@ -24,7 +24,7 @@
 #include <freerdp/settings.h>
 #include <X11/Xlib.h>
 
-#ifdef XRDP_DEBUG
+#ifdef DEBUG_FREERDP1
 #define LOG_LEVEL 99
 #else
 #define LOG_LEVEL 10

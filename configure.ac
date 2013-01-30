@@ -35,6 +35,14 @@ AC_ARG_ENABLE(neutrinordp, AS_HELP_STRING([--enable-neutrinordp],
               [Build neutrinordp module (default: no)]),
               [neutrinordp=true], [neutrinordp=false])
 AM_CONDITIONAL(XRDP_NEUTRINORDP, [test x$neutrinordp = xtrue])
+AC_ARG_ENABLE(freerdp1debug, AS_HELP_STRING([--enable-freerdp1debug],
+              [Build debug (default: no)]),
+              [freerdp1debug=true], [freerdp1debug=false])
+AM_CONDITIONAL(XRDP_DEBUG_FREERDP1, [test x$freerdp1debug = xtrue])
+AC_ARG_ENABLE(freerdp1, AS_HELP_STRING([--enable-freerdp1],
+              [Build freerdp1 module (default: no)]),
+              [freerdp1=true], [freerdp1=false])
+AM_CONDITIONAL(XRDP_FREERDP1, [test x$freerdp1 = xtrue])
 AC_ARG_ENABLE(jpeg, AS_HELP_STRING([--enable-jpeg],
               [Build jpeg module (default: no)]),
               [jpeg=true], [jpeg=false])
