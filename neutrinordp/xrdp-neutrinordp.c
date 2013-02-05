@@ -25,7 +25,7 @@
 #include <X11/Xlib.h>
 
 #ifdef DEBUG_FREERDP1
-#define LOG_LEVEL 99
+#define LOG_LEVEL 11
 #else
 #define LOG_LEVEL 10
 #endif
