@@ -989,7 +989,7 @@ lfreerdp_cache_glyph(rdpContext *context, CACHE_GLYPH_ORDER *cache_glyph_order)
     for (index = 0; index < cache_glyph_order->cGlyphs; index++)
     {
         gd = cache_glyph_order->glyphData[index];
-        LLOGLN(10, ("  %d %d %d %d %d", gd->cacheIndex, gd->x, gd->y,
+        LLOGLN(10, ("Index %d TL:%d,%d WH:%d,%d", gd->cacheIndex, gd->x, gd->y,
                     gd->cx, gd->cy));
         mod->server_add_char(mod, cache_glyph_order->cacheId, gd->cacheIndex,
                              gd->x, gd->y, gd->cx, gd->cy, (char *)(gd->aj));
