@@ -1354,6 +1354,48 @@ static void DEFAULT_CC lfreerdp_syncronize(rdpContext* context)
     LLOGLN(0, ("lfreerdp_synchronize received - not handled"));
 }
 
+int freerdp_parse_username(char* username, char** user, char** domain)
+{
+    char* p;
+    int length;
+
+    p = strchr(username, '\\');
+
+    if (p)
+    {
+        length = p - username;
+        *domain = (char*) malloc(length + 1);
+        strncpy(*domain, username, length);
+        (*domain)[length] = '\0';
+        *user = g_strdup(&p[1]);
+    }
+    else
+    {
+        *user = g_strdup(username);
+        *domain = NULL;
+
+        /*
+        p = strchr(username, '@');
+
+        if (p)
+        {
+            length = p - username;
+            *user = (char*) malloc(length + 1);
+            strncpy(*user, username, length);
+            (*user)[length] = '\0';
+            *domain = g_strdup(&p[1]);
+        }
+        else
+        {
+            *user = g_strdup(username);
+            *domain = NULL;
+        }
+        */
+    }
+
+    return 0;
+}
+
 /******************************************************************************/
 static boolean DEFAULT_CC
 lfreerdp_pre_connect(freerdp *instance)

@@ -1786,8 +1786,10 @@ xrdp_wm_log_wnd_notify(struct xrdp_bitmap *wnd,
             if (wm->mm->mod_handle == 0)
             {
                 /* make sure autologin is off */
-                wm->session->client_info->rdp_autologin = 0;
-                xrdp_wm_set_login_mode(wm, 0); /* reset session */
+                // IMPORTANT:SE
+                libxrdp_disconnect(wm->session);
+                // wm->session->client_info->rdp_autologin = 0;
+                // xrdp_wm_set_login_mode(wm, 0); /* reset session */
             }
         }
     }
