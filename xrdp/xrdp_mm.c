@@ -1666,7 +1666,7 @@ xrdp_mm_connect(struct xrdp_mm *self)
         name = (char *)list_get_item(names, index);
         value = (char *)list_get_item(values, index);
 
-        log_message(LOG_LEVEL_DEBUG, "%s=\"%s\"", name, value);
+        // log_message(LOG_LEVEL_DEBUG, "%s=\"%s\"", name, value);
 
         if (g_strcasecmp(name, "ip") == 0)
         {
