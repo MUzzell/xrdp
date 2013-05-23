@@ -230,7 +230,7 @@ xrdp_rdp_create(struct xrdp_session *session, struct trans *trans)
     self->mppc_enc = mppc_enc_new(PROTO_RDP_50);
 #if defined(XRDP_NEUTRINORDP)
     self->rfx_enc = rfx_context_new();
-    rfx_context_set_cpu_opt(self->rfx_enc, xrdp_rdp_detect_cpu());
+    // rfx_context_set_cpu_opt(self->rfx_enc, xrdp_rdp_detect_cpu());
 #endif
     self->client_info.size = sizeof(self->client_info);
     DEBUG(("out xrdp_rdp_create"));

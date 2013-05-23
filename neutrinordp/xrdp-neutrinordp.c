@@ -399,6 +399,10 @@ lxrdp_set_param(struct mod *mod, char *name, char *value)
     {
         g_strncpy(mod->username, value, 255);
     }
+    else if (g_strcmp(name, "domain") == 0)
+    {
+        g_strncpy(mod->domain, value, 255);
+    }
     else if (g_strcmp(name, "password") == 0)
     {
         g_strncpy(mod->password, value, 255);
@@ -1354,48 +1358,6 @@ static void DEFAULT_CC lfreerdp_syncronize(rdpContext* context)
     LLOGLN(0, ("lfreerdp_synchronize received - not handled"));
 }
 
-int freerdp_parse_username(char* username, char** user, char** domain)
-{
-    char* p;
-    int length;
-
-    p = strchr(username, '\\');
-
-    if (p)
-    {
-        length = p - username;
-        *domain = (char*) malloc(length + 1);
-        strncpy(*domain, username, length);
-        (*domain)[length] = '\0';
-        *user = g_strdup(&p[1]);
-    }
-    else
-    {
-        *user = g_strdup(username);
-        *domain = NULL;
-
-        /*
-        p = strchr(username, '@');
-
-        if (p)
-        {
-            length = p - username;
-            *user = (char*) malloc(length + 1);
-            strncpy(*user, username, length);
-            (*user)[length] = '\0';
-            *domain = g_strdup(&p[1]);
-        }
-        else
-        {
-            *user = g_strdup(username);
-            *domain = NULL;
-        }
-        */
-    }
-
-    return 0;
-}
-
 /******************************************************************************/
 static boolean DEFAULT_CC
 lfreerdp_pre_connect(freerdp *instance)
@@ -1468,6 +1430,7 @@ lfreerdp_pre_connect(freerdp *instance)
 
     instance->settings->username = g_strdup(mod->username);
     instance->settings->password = g_strdup(mod->password);
+    instance->settings->domain = g_strdup(mod->domain);
 
     if (mod->client_info.rail_support_level > 0)
     {
