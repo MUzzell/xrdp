@@ -422,7 +422,6 @@ xrdp_sec_encrypt(struct xrdp_sec *self, char *data, int len)
                         self->rc4_key_len);
         self->encrypt_use_count = 0;
     }
-
     ssl_rc4_crypt(self->encrypt_rc4_info, data, len);
     self->encrypt_use_count++;
 }
