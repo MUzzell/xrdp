@@ -2750,9 +2750,8 @@ xrdp_orders_send_bitmap3(struct xrdp_orders *self,
         context = (RFX_CONTEXT *)(self->rdp_layer->rfx_enc);
         make_stream(xr_s);
         init_stream(xr_s, 16384);
-        // fr_s = stream_new(0);
-        // stream_attach(fr_s, (tui8 *)(xr_s->data), 16384);
-        fr_s = Stream_New((tui8 *)(xr_s->data), 16384);
+        fr_s = stream_new(0);
+        stream_attach(fr_s, (tui8 *)(xr_s->data), 16384);
         rect.x = 0;
         rect.y = 0;
         rect.width = width;
